@@ -243,7 +243,7 @@ vim.u.keymap.set.nvim_lsp_installer = {
 vim.u.keymap.set.telescope = {
   vim_api_set = {
     -- 查找文件
-    { "n", "<C-p>", ":Telescope find_files<CR>", "ns_opt" },
+    { "n", "<C-p>", ":Telescope find_files theme=dropdown<CR>", "ns_opt" },
     -- 全局搜索
     { "n", "<C-f>", ":Telescope live_grep<CR>", "ns_opt"},
     -- 查找文件

@@ -1,6 +1,6 @@
 -- https://github.com/williamboman/nvim-lsp-installer
 
-local plugin_key = vim.u.keymap.set.nvim_lsp_installer.plugin_set
+-- local plugin_key = vim.u.keymap.set.nvim_lsp_installer.plugin_set
 
 local lsp_installer_servers = require("nvim-lsp-installer.servers")
 
@@ -23,7 +23,8 @@ local servers = {
     jsonls = require("lsp.config.jsonls"),
     -- zeta_note = require("lsp.config.zeta_note"),
     -- sqls = require("lsp.config.sqls"),
-    vuels = require("lsp.config.vuels")
+    vuels = require("lsp.config.vuels"),
+    rust_analyzer = require("lsp.config.rust_analyzer"),
 }
 
 -- 这里是 LSP 服务启动后的按键加载

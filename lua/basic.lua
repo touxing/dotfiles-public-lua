@@ -3,7 +3,7 @@ vim.g.encoding = "UTF-8"
 vim.o.fileencoding = 'utf-8'
 -- 貌似不在 GUI 设置字体大小不生效
 vim.o.guifont="FantasqueSansMono Nerd Font Mono:h20"
-
+vim.g.backspace="indent,eol,start"
 -- 是否在屏幕最后一行显示命令
 vim.o.showcmd = true
 -- jkhl 移动时光标周围保留8行
@@ -66,8 +66,6 @@ vim.o.splitbelow = true
 vim.o.splitright = true
 -- 自动补全不自动选中
 vim.g.completeopt = "menu,menuone,noselect,noinsert"
--- 样式
-vim.o.background = "dark"
 -- 是否开启 xterm 兼容的终端 24 位色彩支持
 vim.o.termguicolors = true
 vim.opt.termguicolors = true

@@ -9,9 +9,7 @@ local plugin_key = vim.u.keymap.set.nvim_treesitter.plugin_set
 treesitter.setup({
   -- 安装 language parser
   -- :TSInstallInfo 命令查看支持的语言
-  -- ensure_installed = { "json", "html", "css", "vim", "lua", "javascript", "typescript", "tsx", "go", "rust", "toml", "yaml", "markdown" },
-  -- 安装的高亮支持来源
-  ensure_installed = "maintained",
+  ensure_installed = { "json", "html", "css", "vim", "lua", "javascript", "typescript", "tsx", "go", "rust", "toml", "yaml", "markdown" },
   -- 同步下载高亮支持
   sync_install = false,
   -- 高亮相关
