@@ -188,7 +188,7 @@ vim.u.keymap.set.lsp_signature = {
   vim_api_set = {},
   plugin_set = {
     -- 显示签名
-    toggle_key = "<c-j>"
+    toggle_key = "<C-j>"
   }
 }
 
@@ -260,6 +260,17 @@ vim.u.keymap.set.telescope = {
     {"n", "<leader>fm", "<cmd>Telescope marks theme=dropdown<CR>", "ns_opt"},
   },
   plugin_set = {}
+}
+
+vim.u.keymap.set.copilot = {
+  vim_api_set = {
+    {"i", "<C-i", "copilot#Accept('')",  "ns_opt"}
+  },
+  plugin_set = {}
+  -- 使用 C-l 确认补全
+  -- 使用 M-[ 查看上一个补全
+  -- 使用 M-[ 查看下一个补全
+  -- 使用 C-[ 关闭补全
 }
 
 -- 插件快捷键
