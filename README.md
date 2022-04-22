@@ -12,6 +12,6 @@ git clone git@github.com:touxing/dotfiles-public-lua.git  ~/.config/nvim
 windows 系统放到这个目录下
 
 ```sh
-git clone git@github.com:touxing/dotfiles-public-lua.git ~\AppData\Local\nvim
+git clone git@github.com:touxing/dotfiles-public-lua.git %localappdata%\nvim
 ```
 注意：windows系统下，如果不生效，就放到 `~\AppData\Local\nvim-data\` 目录下
