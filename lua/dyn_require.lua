@@ -5,7 +5,8 @@ local config_list = {
   "dashboard",
   "project",
   "nvim-treesitter",
-  "indent-blankline"
+  "indent-blankline",
+  "emmet",
 }
 
 for _,value in ipairs(config_list) do

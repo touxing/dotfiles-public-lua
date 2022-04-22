@@ -168,6 +168,13 @@ function(use)
       require("conf.vista")
     end
   }
+  -- git copilot 自动补全
+  use {
+    "github/copilot.vim",
+    config = function()
+      require("conf.copilot")
+    end
+  }
   -- ------------------ LSP --------------------
   -- LSP 基础服务
   use {
