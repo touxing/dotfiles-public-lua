@@ -120,57 +120,18 @@ vim.u.keymap.set.comment = {
   }
 }
 
--- nvim-tree
-vim.u.keymap.set.nvim_tree = {
+vim.u.keymap.set.copilot = {
   vim_api_set = {
-    -- alt + m 键打开关闭tree
-    {"n", "<A-m>", ":NvimTreeToggle<CR>", "ns_opt"},
-    -- 按 leader 1 打开文件树
-    {"n", "<leader>1", "<cmd>NvimTreeToggle<CR>", "ns_opt"},
-    -- 按 leader fc 在文件树中找到当前以打开文件的位置
-    {"n", "<leader>fc", "<cmd>NvimTreeFindFile<CR>", "ns_opt"},
-
-    -- 默认按键
-    -- o     ：打开目录或文件
-    -- a     ：新增目录或文件
-    -- r     ：重命名目录或文件
-    -- x     ：剪切目录或文件
-    -- c     ：复制目录或文件
-    -- d     ：删除目录或文件
-    -- y     ：复制目录或文件名称
-    -- Y     ：复制目录或文件相对路径
-    -- gy    ：复制目录或文件绝对路径
-    -- p     ：粘贴目录或文件
-    -- s     ：使用系统默认程序打开目录或文件
-    -- <Tab> ：将文件添加到缓冲区，但不移动光标
-    -- <C-v> ：垂直分屏打开文件
-    -- <C-x> ：水平分屏打开文件
-    -- <C-]> ：进入光标下的目录
-    -- <C-r> ：重命名目录或文件，删除已有目录名称
-    -- -     ：返回上层目录
-    -- I     ：切换隐藏文件/目录的可见性
-    -- H     ：切换点文件的可见性
-    -- R     ：刷新资源管理器
-    -- 另外，文件资源管理器操作和操作文档方式一致，可按 / ? 进行搜索
+    {"i", "<C-i", "copilot#Accept('')",  "ns_opt"}
   },
   plugin_set = {}
+  -- 使用 C-l 确认补全
+  -- 使用 M-[ 查看上一个补全
+  -- 使用 M-[ 查看下一个补全
+  -- 使用 C-[ 关闭补全
 }
 
-vim.u.keymap.set.nvim_treesitter = {
-  vim_api_set = {},
-  plugin_set = {
-    incremental_selection_keymaps = {
-      -- 初始化选择
-      init_selection = "<CR>",
-      -- 递增
-      node_incremental = "<CR>",
-      -- 递减
-      node_decremental = "<BS>",
-      -- 选择一个范围
-      scope_incremental = "<TAB>"
-    }
-  }
-}
+
 vim.u.keymap.set.hop = {
   vim_api_set = {
     -- 搜索并跳转到单词
@@ -224,6 +185,29 @@ vim.u.keymap.set.nvim_cmp = {
   }
 }
 
+vim.u.keymap.set.nvim_hlslens = {
+  vim_api_set = {
+      {
+          "n",
+          "n",
+          "<cmd>execute('normal!'.v:count1.'n')<cr><cmd>lua require('hlslens').start()<cr>",
+          "ns_opt"
+      },
+      {
+          "n",
+          "N",
+          "<cmd>execute('normal!'.v:count1.'N')<cr><cmd>lua require('hlslens').start()<cr>",
+          "ns_opt"
+      },
+      {"n", "*", "*<cmd>lua require('hlslens').start()<cr>", "ns_opt"},
+      {"n", "#", "#<cmd>lua require('hlslens').start()<cr>", "ns_opt"},
+      {"n", "g*", "g*<cmd>lua require('hlslens').start()<cr>", "ns_opt"},
+      {"n", "g#", "g#<cmd>lua require('hlslens').start()<cr>", "ns_opt"}
+  },
+  plugin_set = {}
+}
+
+
 vim.u.keymap.set.nvim_lsp_installer = {
   vim_api_set = {},
   plugin_set = {
@@ -237,6 +221,95 @@ vim.u.keymap.set.nvim_lsp_installer = {
     diagnostic_jump_next = "g]",
     smart_scroll_with_saga_prev = "<c-p>",
     smart_scroll_with_saga_next = "<c-n>"
+  }
+}
+
+vim.u.keymap.set.nvim_spectre = {
+  vim_api_set = {
+      {"n", "<leader>rp", "<cmd>lua require('spectre').open()<cr>", "ns_opt"},
+      {"n", "<leader>rf", "viw:lua require('spectre').open_file_search()<cr>", "ns_opt"},
+      {"n", "<leader>rw", "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "ns_opt"}
+  },
+  plugin_set = {
+      mapping = {
+          ["toggle_line"] = {
+              map = "dd",
+              cmd = "<cmd>lua require('spectre').toggle_line()<cr>",
+              desc = "toggle current item"
+          },
+          ["enter_file"] = {
+              map = "<cr>",
+              cmd = "<cmd>lua require('spectre.actions').select_entry()<cr>",
+              desc = "goto current file"
+          },
+          ["show_option_menu"] = {
+              map = "<leader>o",
+              cmd = "<cmd>lua require('spectre').show_options()<cr>",
+              desc = "show option"
+          },
+          ["run_replace"] = {
+              map = "<leader>r",
+              cmd = "<cmd>lua require('spectre.actions').run_replace()<cr>",
+              desc = "replace all"
+          },
+          ["change_view_mode"] = {
+              map = "<leader>v",
+              cmd = "<cmd>lua require('spectre').change_view()<cr>",
+              desc = "change result view mode"
+          }
+      }
+  }
+}
+
+-- nvim-tree
+vim.u.keymap.set.nvim_tree = {
+  vim_api_set = {
+    -- alt + m 键打开关闭tree
+    {"n", "<A-m>", ":NvimTreeToggle<CR>", "ns_opt"},
+    -- 按 leader 1 打开文件树
+    {"n", "<leader>1", "<cmd>NvimTreeToggle<CR>", "ns_opt"},
+    -- 按 leader fc 在文件树中找到当前以打开文件的位置
+    {"n", "<leader>fc", "<cmd>NvimTreeFindFile<CR>", "ns_opt"},
+
+    -- 默认按键
+    -- o     ：打开目录或文件
+    -- a     ：新增目录或文件
+    -- r     ：重命名目录或文件
+    -- x     ：剪切目录或文件
+    -- c     ：复制目录或文件
+    -- d     ：删除目录或文件
+    -- y     ：复制目录或文件名称
+    -- Y     ：复制目录或文件相对路径
+    -- gy    ：复制目录或文件绝对路径
+    -- p     ：粘贴目录或文件
+    -- s     ：使用系统默认程序打开目录或文件
+    -- <Tab> ：将文件添加到缓冲区，但不移动光标
+    -- <C-v> ：垂直分屏打开文件
+    -- <C-x> ：水平分屏打开文件
+    -- <C-]> ：进入光标下的目录
+    -- <C-r> ：重命名目录或文件，删除已有目录名称
+    -- -     ：返回上层目录
+    -- I     ：切换隐藏文件/目录的可见性
+    -- H     ：切换点文件的可见性
+    -- R     ：刷新资源管理器
+    -- 另外，文件资源管理器操作和操作文档方式一致，可按 / ? 进行搜索
+  },
+  plugin_set = {}
+}
+
+vim.u.keymap.set.nvim_treesitter = {
+  vim_api_set = {},
+  plugin_set = {
+    incremental_selection_keymaps = {
+      -- 初始化选择
+      init_selection = "<CR>",
+      -- 递增
+      node_incremental = "<CR>",
+      -- 递减
+      node_decremental = "<BS>",
+      -- 选择一个范围
+      scope_incremental = "<TAB>"
+    }
   }
 }
 
@@ -262,16 +335,98 @@ vim.u.keymap.set.telescope = {
   plugin_set = {}
 }
 
-vim.u.keymap.set.copilot = {
+vim.u.keymap.set.todo_comments = {
+    vim_api_set = {
+        {"n", "<leader>ft", "<cmd>TodoTelescope theme=dropdown<cr>", "ns_opt"}
+    },
+    plugin_set = {}
+}
+
+vim.u.keymap.set.toggleterm = {
+    vim_api_set = {
+        {"n", "<leader>tt", "<cmd>exe v:count.'ToggleTerm'<cr>", "ns_opt"},
+        {"n", "<leader>tf", "<cmd>lua require('toggleterm').float_toggle()<cr>", "ns_opt"},
+        {"n", "<leader>tg", "<cmd>lua require('toggleterm').lazygit_toggle()<cr>", "ns_opt"},
+        {"n", "<leader>ta", "<cmd>ToggleTermToggleAll<cr>", "ns_opt"}
+    },
+    plugin_set = {
+        delete_all_exit = "<esc>",
+        lazygit = {
+            lazygit_exit = "q",
+            again_exit = "<esc>"
+        },
+        float = {
+            float_exit = "<esc>",
+            again_exit = "<esc>"
+        }
+    }
+}
+
+vim.u.keymap.set.undotree = {
+    vim_api_set = {
+        {"n", "<leader>3", ":UndotreeToggle<cr>", "ns_opt"}
+    },
+    plugin_set = {}
+}
+
+vim.u.keymap.set.vim_multiple_cursors = {
+  vim_api_set = {},
+  plugin_set = {
+      start_word_key = "gb",
+      next_key = "<c-n>",
+      prev_key = "<c-p>",
+      skip_key = "<c-b>",
+      quit_key = "<esc>"
+  }
+}
+
+vim.u.keymap.set.vim_translator = {
   vim_api_set = {
-    {"i", "<C-i", "copilot#Accept('')",  "ns_opt"}
+      {"n", "<leader>tsc", ":Translate --target_lang=zh --source_lang=auto<cr>", "ns_opt"},
+      {"v", "<leader>tsc", ":TranslateW --target_lang=zh --source_lang=auto<cr>", "ns_opt"},
+      {"n", "<leader>tse", ":Translate --target_lang=en --source_lang=auto<cr>", "ns_opt"},
+      {"v", "<leader>tse", ":TranslateW --target_lang=en --source_lang=auto<cr>", "ns_opt"},
+      {"n", "<leader>trc", ":TranslateR --target_lang=zh --source_lang=auto<cr>", "ns_opt"},
+      {"v", "<leader>trc", ":TranslateR --target_lang=zh --source_lang=auto<cr>", "ns_opt"},
+      {"n", "<leader>tre", ":TranslateR --target_lang=en --source_lang=auto<cr>", "ns_opt"},
+      {"v", "<leader>tre", ":TranslateR --target_lang=en --source_lang=auto<cr>", "ns_opt"}
   },
   plugin_set = {}
-  -- 使用 C-l 确认补全
-  -- 使用 M-[ 查看上一个补全
-  -- 使用 M-[ 查看下一个补全
-  -- 使用 C-[ 关闭补全
 }
+
+vim.u.keymap.set.aerial = {
+  vim_api_set = {},
+  plugin_set = {
+      aerial_toggle = "<leader>2",
+      aerial_prev = "{",
+      aerial_next = "}",
+      aerial_prev_up = "[[",
+      aerial_next_up = "]]"
+  }
+  -- <C-j> : 移动到下一个项目
+  -- <C-k> : 移动到上一个项目
+  -- {     : 移动到上一个类别
+  -- }     : 移动到下一个类别
+  -- [[    : 移动到上一个类别
+  -- ]]    : 移动到下一个类别
+  -- o     : 打开当前项目
+  -- za    : 切换当前项目
+  -- zc    : 关闭当前项目
+  -- zo    : 打开当前项目
+  -- zM    : 关闭所有项目
+  -- zR    : 关闭所有项目
+}
+
+vim.u.keymap.set.vim_dadbod_ui = {
+  vim_api_set = {
+      {"n", "<leader>4", ":DBUIToggle<cr>", "ns_opt"}
+  },
+  plugin_set = {}
+}
+
+for plugin_name, _ in pairs(vim.u.keymap.set) do
+  vim.u.keymap.fn.register_key(plugin_name)
+end
 
 -- 插件快捷键
 local pluginKeys = {}
@@ -366,9 +521,5 @@ pluginKeys.telescopeList = {
     ["<C-d>"] = "preview_scrolling_down",
   },
 }
-
-for plugin_name, _ in pairs(vim.u.keymap.set) do
-  vim.u.keymap.fn.register_key(plugin_name)
-end
 
 return pluginKeys

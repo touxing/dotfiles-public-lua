@@ -1,11 +1,12 @@
 -- https://github.com/akinsho/toggleterm.nvim
 
 local Toggleterm = require("toggleterm")
+local plugin_key = vim.u.keymap.set.toggleterm.plugin_set
 
 Toggleterm.setup(
     {
         --  开启的终端默认进入插入模式
-        start_in_insert = true,
+        start_in_insert = false,
         -- 设置终端打开的大小
         size = 6,
         -- 打开普通终端时，关闭拼写检查
@@ -19,8 +20,10 @@ Toggleterm.setup(
 local Terminal = require("toggleterm.terminal").Terminal
 
 local function inInsert()
+    -- 进入插入模式
+    vim.cmd("startinsert")
     -- 删除 Esc 的映射
-    vim.keybinds.dgmap("t", "<Esc>")
+    vim.api.nvim_del_keymap("t", plugin_key.delete_all_exit)
 end
 
 -- 新建浮动终端
@@ -35,11 +38,17 @@ local floatTerm =
         on_open = function(term)
             inInsert()
             -- 浮动终端中 Esc 是退出
-            vim.keybinds.bmap(term.bufnr, "t", "<Esc>", "<C-\\><C-n>:close<CR>", vim.keybinds.opts)
+            vim.api.nvim_buf_set_keymap(
+                term.bufnr,
+                "t",
+                plugin_key.float.float_exit,
+                "<c-\\><c-n>:close<cr>",
+                vim.u.keymap.opt.ns_opt
+            )
         end,
         on_close = function()
             -- 重新映射 Esc
-            vim.keybinds.gmap("t", "<Esc>", "<C-\\><C-n>", vim.keybinds.opts)
+            vim.api.nvim_set_keymap("t", plugin_key.float.again_exit, "<c-\\><c-n>", vim.u.keymap.opt.ns_opt)
         end
     }
 )
@@ -57,11 +66,17 @@ local lazyGit =
         on_open = function(term)
             inInsert()
             -- lazygit 中 q 是退出
-            vim.keybinds.bmap(term.bufnr, "i", "q", "<cmd>close<CR>", vim.keybinds.opts)
+            vim.api.nvim_buf_set_keymap(
+                term.bufnr,
+                "i",
+                plugin_key.lazygit.lazygit_exit,
+                "<cmd>close<CR>",
+                vim.u.keymap.opt.ns_opt
+            )
         end,
         on_close = function()
             -- 重新映射 Esc
-            vim.keybinds.gmap("t", "<Esc>", "<C-\\><C-n>", vim.keybinds.opts)
+            vim.api.nvim_set_keymap("t", plugin_key.lazygit.again_exit, "<c-\\><c-n>", vim.u.keymap.opt.ns_opt)
         end
     }
 )
@@ -74,20 +89,3 @@ end
 Toggleterm.lazygit_toggle = function()
     lazyGit:toggle()
 end
-
--- 退出终端插入模式
-vim.keybinds.gmap("t", "<Esc>", "<C-\\><C-n>", vim.keybinds.opts)
--- 打开普通终端
-vim.keybinds.gmap("n", "<leader>tt", "<cmd>exe v:count.'ToggleTerm'<CR>", vim.keybinds.opts)
--- 打开浮动终端
-vim.keybinds.gmap("n", "<leader>tf", "<cmd>lua require('toggleterm').float_toggle()<CR>", vim.keybinds.opts)
--- 打开lazy git 终端
-vim.keybinds.gmap("n", "<leader>tg", "<cmd>lua require('toggleterm').lazygit_toggle()<CR>", vim.keybinds.opts)
--- 打开或关闭所有终端
-vim.keybinds.gmap("n", "<leader>ta", "<cmd>ToggleTermToggleAll<CR>", vim.keybinds.opts)
-
--- 要需创建多个终端，可：
--- 1 <键位> leader tt
--- 2 <键位>
--- ... <键位>
--- 另外，上面我们新建了 2 个特殊终端，所以普通终端的顺序应该是从 3 开始

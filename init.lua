@@ -8,7 +8,7 @@ require("plugins")
 -- 主题设置
 require("colorscheme")
 -- 插件配置
-require("dyn_require")
+-- require("dyn_require")
 -- 内置LSP
-require("lsp.setup")
-require("lsp.ui")
+-- require("lsp.setup")
+-- require("lsp.ui")
