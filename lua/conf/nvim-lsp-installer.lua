@@ -14,15 +14,16 @@ capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 -- 另外注意安装的 nodejs 和 npm 的版本要新，太久的版本会导致 lsp 无法正常工作
 
 local servers = {
-    sumneko_lua = require("lsp.sumneko_lua"),
-    pyright = require("lsp.pyright"),
-    tsserver = require("lsp.tsserver"),
-    html = require("lsp.html"),
-    cssls = require("lsp.cssls"),
-    gopls = require("lsp.gopls"),
-    jsonls = require("lsp.jsonls"),
-    zeta_note = require("lsp.zeta_note"),
-    vuels = require("lsp.vuels")
+    sumneko_lua = require("lsp.config.sumneko_lua"),
+    -- pyright = require("lsp.config.pyright"),
+    tsserver = require("lsp.config.tsserver"),
+    html = require("lsp.config.html"),
+    cssls = require("lsp.config.cssls"),
+    gopls = require("lsp.config.gopls"),
+    jsonls = require("lsp.config.jsonls"),
+    -- zeta_note = require("lsp.config.zeta_note"),
+    rust_analyzer = require("lsp.config.rust_analyzer"),
+    vuels = require("lsp.config.vuels")
 }
 
 local function attach(client, bufnr)
