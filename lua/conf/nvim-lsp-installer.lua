@@ -21,8 +21,8 @@ local servers = {
     cssls = require("lsp.config.cssls"),
     gopls = require("lsp.config.gopls"),
     jsonls = require("lsp.config.jsonls"),
-    -- zeta_note = require("lsp.config.zeta_note"),
-    rust_analyzer = require("lsp.config.rust_analyzer"),
+    zeta_note = require("lsp.config.zeta_note"),
+    -- rust_analyzer = require("lsp.config.rust_analyzer"),
     vuels = require("lsp.config.vuels")
 }
 

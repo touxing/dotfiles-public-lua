@@ -175,24 +175,24 @@ local install_plugins = {
     after = "nvim-cmp",
     disable = true
   },
-  -- {
-  --   -- 代码调试基础插件
-  --   "mfussenegger/nvim-dap",
-  --   load_file = true,
-  --   event = { "BufRead", "BufNewFile" }
-  -- },
-  -- {
-  --   -- 为代码调试提供内联文本
-  --   "theHamsta/nvim-dap-virtual-text",
-  --   load_file = true,
-  --   after = "nvim-dap"
-  -- },
-  -- {
-  --   -- 为代码调试提供 UI 界面
-  --   "rcarriga/nvim-dap-ui",
-  --   load_file = true,
-  --   after = "nvim-dap"
-  -- },
+  {
+    -- 代码调试基础插件
+    "mfussenegger/nvim-dap",
+    load_file = true,
+    event = { "BufRead", "BufNewFile" }
+  },
+  {
+    -- 为代码调试提供内联文本
+    "theHamsta/nvim-dap-virtual-text",
+    load_file = true,
+    after = "nvim-dap"
+  },
+  {
+    -- 为代码调试提供 UI 界面
+    "rcarriga/nvim-dap-ui",
+    load_file = true,
+    after = "nvim-dap"
+  },
   {
     -- 删除 buffer 时不影响现有布局
     "famiu/bufdelete.nvim",
@@ -433,6 +433,15 @@ local install_plugins = {
     load_file = true
   },
   {
+    "rust-lang/rust.vim"
+  },
+  {
+    -- rust tool
+    "simrat39/rust-tools.nvim",
+    after = {"nvim-lspconfig"},
+    load_file = true
+  },
+  {
     -- 查询启动时间
     "dstein64/vim-startuptime",
     cmd = "StartupTime"
@@ -469,13 +478,14 @@ require("packer").startup(
 )
 
 -- 实时生效配置
-vim.cmd(
+pcall(
+  vim.cmd,
   [[
-  augroup packer_user_config
+    augroup packer_user_config
     autocmd!
     autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-  augroup end
-]]
+    augroup end
+  ]]
 )
 
 return packer
