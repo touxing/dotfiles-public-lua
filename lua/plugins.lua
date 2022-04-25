@@ -330,17 +330,17 @@ local install_plugins = {
       "xml"
     }
   },
-  {
-    -- SQL 链接基础插件
-    "tpope/vim-dadbod",
-    cmd = "DBUIToggle"
-  },
-  {
-    -- SQL 链接 UI 插件
-    "kristijanhusak/vim-dadbod-ui",
-    load_file = true,
-    after = "vim-dadbod"
-  },
+  -- {
+  --   -- SQL 链接基础插件
+  --   "tpope/vim-dadbod",
+  --   cmd = "DBUIToggle"
+  -- },
+  -- {
+  --   -- SQL 链接 UI 插件
+  --   "kristijanhusak/vim-dadbod-ui",
+  --   load_file = true,
+  --   after = "vim-dadbod"
+  -- },
   {
     -- 内置终端
     "akinsho/toggleterm.nvim",
