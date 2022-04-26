@@ -36,7 +36,7 @@ vim.u.keymap.set.base = {
     -- 插入模下 jj 退出插入模式
     {"i", "jj", "<Esc>", "ns_opt"},
     -- 按 Esc 取消当前搜索高亮
-    {"n", "<Esc>", ":nohlsearch<cr>", "ns_opt"},
+    {"n", "<Esc>", ":nohlsearch<CR>", "ns_opt"},
     -- windows 分屏快捷键
     {"n", "sv", ":vsp<CR>", "ns_opt"},
     {"n", "sh", ":sp<CR>", "ns_opt"},
@@ -215,7 +215,7 @@ vim.u.keymap.set.nvim_lsp_installer = {
     lsp_references = "gr",
     diagnostics = "go",
     lsp_code_actions = "<leader>ca",
-    rename = "<leader>cn",
+    rename = "<leader>rn",
     hover_doc = "gh",
     diagnostic_jump_prev = "g[",
     diagnostic_jump_next = "g]",

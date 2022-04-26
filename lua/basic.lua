@@ -2,7 +2,7 @@
 vim.g.encoding = "UTF-8"
 vim.o.fileencoding = 'utf-8'
 -- 貌似不在 GUI 设置字体大小不生效
-vim.o.guifont="FantasqueSansMono Nerd Font Mono:h20"
+vim.o.guifont="FantasqueSansMono Nerd Font Mono:h16"
 vim.g.termguicolors=true
 vim.g.backspace="indent,eol,start"
 -- 是否在屏幕最后一行显示命令
