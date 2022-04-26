@@ -87,3 +87,12 @@ vim.o.showmode = false
 vim.o.foldenable = true
 -- 指定代码折叠的策略是按照缩进进行的
 vim.o.foldmethod = "indent"
+
+vim.cmd(
+  [[
+    " 关联新文件类型
+    autocmd BufRead,BufNewFile *.wxml set filetype=html
+    autocmd BufRead,BufNewFile *.wxss set filetype=css
+    autocmd BufRead,BufNewFile *.ts set filetype=typescript
+  ]]
+)

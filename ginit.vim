@@ -1,1 +1,1 @@
-set guifont=FantasqueSansMono\ Nerd\ Font\ Mono:h16
+" set guifont=FantasqueSansMono\ Nerd\ Font\ Mono:h16
