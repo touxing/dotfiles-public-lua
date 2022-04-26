@@ -31,3 +31,25 @@ lspconfig.emmet_ls.setup({
     capabilities = capabilities,
     filetypes = { "html", "css", "typescriptreact", "javascriptreact" },
 })
+
+local on_attach = function(client)
+  require'completion'.on_attach(client)
+end
+
+lspconfig.rust_analyzer.setup({
+  on_attach=on_attach,
+  settings = {
+      ["rust-analyzer"] = {
+          assist = {
+              importGranularity = "module",
+              importPrefix = "self",
+          },
+          cargo = {
+              loadOutDirsFromCheck = true
+          },
+          procMacro = {
+              enable = true
+          },
+      }
+  }
+})
