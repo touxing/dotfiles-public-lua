@@ -29,7 +29,7 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 lspconfig.emmet_ls.setup({
     -- on_attach = on_attach,
     capabilities = capabilities,
-    filetypes = { "html", "css", "typescriptreact", "javascriptreact" },
+    filetypes = { "html", "css", "typescriptreact", "javascriptreact", "wxml" },
 })
 
 local on_attach = function(client)

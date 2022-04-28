@@ -35,6 +35,9 @@ vim.u.keymap.set.base = {
   vim_api_set = {
     -- 插入模下 jj 退出插入模式
     {"i", "jj", "<Esc>", "ns_opt"},
+    {"i", "<C-j>", "<Esc>", "ns_opt"},
+    -- 映射 O 快捷键插入行
+    {"n", "<C-k>", "<S-o>", "ns_opt"},
     -- 按 Esc 取消当前搜索高亮
     {"n", "<Esc>", ":nohlsearch<CR>", "ns_opt"},
     -- windows 分屏快捷键
@@ -122,7 +125,7 @@ vim.u.keymap.set.comment = {
 
 vim.u.keymap.set.copilot = {
   vim_api_set = {
-    {"i", "<C-i", "copilot#Accept('')",  "ns_opt"}
+    {"i", "<C-y>", "copilot#Accept('')",  "ns_opt"}
   },
   plugin_set = {}
   -- 使用 C-l 确认补全
@@ -149,7 +152,7 @@ vim.u.keymap.set.lsp_signature = {
   vim_api_set = {},
   plugin_set = {
     -- 显示签名
-    toggle_key = "<C-j>"
+    toggle_key = "<C-k>"
   }
 }
 
