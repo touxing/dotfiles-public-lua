@@ -40,6 +40,7 @@ vim.u.keymap.set.base = {
     {"n", "<C-k>", "<S-o>", "ns_opt"},
     -- 按 Esc 取消当前搜索高亮
     {"n", "<Esc>", ":nohlsearch<CR>", "ns_opt"},
+    {"n", "<C-a>", "gg<S-v>G", "ns_opt"},
     -- windows 分屏快捷键
     {"n", "sv", ":vsp<CR>", "ns_opt"},
     {"n", "sh", ":sp<CR>", "ns_opt"},
@@ -78,6 +79,8 @@ vim.u.keymap.set.base = {
     -- insert 模式下，跳到行首行尾
     {"i", "<C-h>", "<ESC>I", "ns_opt"},
     {"i", "<C-l>", "<ESC>A", "ns_opt"},
+    -- 载入配置
+    {"n", "<F5>", ":source $MYVIMRC<CR>", "ns_opt"},
   },
   plugin_set= {}
 }
