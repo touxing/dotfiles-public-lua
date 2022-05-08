@@ -16,3 +16,9 @@ windows 系统放到这个目录下
 git clone git@github.com:touxing/dotfiles-public-lua.git "$env:LOCALAPPDATA\nvim"
 ```
 注意：windows系统下，如果不生效，就放到 `~\AppData\Local\nvim-data\` 目录下
+
+## 其他
+
+安装 rust hint
+1. `rust-analyzer` 在`nvim`中用`TspInstall`安装
+2. 把 `rust-analyzer` 执行文件添加到 `$PATH` 中
