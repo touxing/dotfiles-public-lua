@@ -5,9 +5,8 @@ local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.n
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
     ---@diagnostic disable-next-line: lowercase-global
     -- packer_bootstrap = vim.fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
-    --csdn加速镜像
-		fn.system({'git', 'clone', '--depth', '1', 'https://codechina.csdn.net/mirrors/wbthomason/packer.nvim.git', install_path})
-    vim.cmd "packadd packer.nvim"
+    --fastgit镜像
+    packer_bootstrap = vim.fn.system({'git', 'clone', '--depth', '1', 'https://hub.fastgit.xyz/wbthomason/packer.nvim.git', install_path})
   end
 
 local install_plugins = {
@@ -474,10 +473,10 @@ require("packer").startup(
     end,
     config = {
       git = {
-        default_url_format = "https://hub.fastgit.org/%s"
+        default_url_format = "https://hub.fastgit.xyz/%s"
       },
       display = {
-        open_fn = require("packer.util").float({border = "single"})
+        open_fn = require("packer.util").float
       }
     }
   }
