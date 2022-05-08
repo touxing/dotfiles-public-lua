@@ -36,6 +36,11 @@ vim.u.keymap.set.base = {
     -- 插入模下 jj 退出插入模式
     {"i", "jj", "<Esc>", "ns_opt"},
     {"i", "<C-j>", "<Esc>", "ns_opt"},
+    -- 系统粘贴
+    {"i", "<C-v>", "<Esc>\"+pa", "ns_opt"},
+    -- 保存 asdsad
+    {"i", "<C-s>", "<Esc>:w<Cr>a", "ns_opt"},
+    {"n", "<C-s>", ":w<Cr>", "ns_opt"},
     -- 映射 O 快捷键插入行
     {"n", "<C-k>", "<S-o>", "ns_opt"},
     -- 按 Esc 取消当前搜索高亮

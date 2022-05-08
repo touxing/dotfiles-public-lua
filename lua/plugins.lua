@@ -442,6 +442,10 @@ local install_plugins = {
     load_file = true
   },
   {
+    "jose-elias-alvarez/null-ls.nvim",
+    load_file = true
+  },
+  {
     -- 查询启动时间
     "dstein64/vim-startuptime",
     cmd = "StartupTime"
