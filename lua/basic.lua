@@ -2,7 +2,7 @@
 vim.g.encoding = "UTF-8"
 vim.o.fileencoding = 'utf-8'
 -- 貌似不在 GUI 设置字体大小不生效
-vim.o.guifont="FantasqueSansMono Nerd Font Mono:h15"
+vim.o.guifont="FantasqueSansMono Nerd Font Mono:h16, CaskaydiaCove Nerd Font:h16"
 vim.g.termguicolors=true
 vim.g.backspace="indent,eol,start"
 -- 是否在屏幕最后一行显示命令
@@ -90,10 +90,10 @@ vim.o.foldmethod = "indent"
 
 vim.cmd(
   [[
-    " 关联新文件类型
+    " 关联文件类型
     autocmd BufRead,BufNewFile *.wxml set filetype=html
     autocmd BufRead,BufNewFile *.wxss set filetype=css
-    autocmd BufRead,BufNewFile *.ts set filetype=typescript
+    autocmd BufRead,BufNewFile *.ts,*.tsx,*jsx set filetype=typescript
   ]]
 )
 

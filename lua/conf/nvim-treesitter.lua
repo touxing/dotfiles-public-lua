@@ -9,7 +9,7 @@ require("nvim-treesitter.configs").setup(
         -- 安装的高亮支持来源
         -- 安装 language parser
         -- :TSInstallInfo 命令查看支持的语言
-        ensure_installed = { "json", "html", "css", "vim", "lua", "javascript", "typescript", "tsx", "go", "rust", "toml", "yaml", "markdown" },
+        ensure_installed = { "json", "html", "css", "vim", "lua", "javascript", "typescript", "tsx", "go", "rust", "python", "toml", "yaml", "markdown" },
         -- 同步下载高亮支持
         sync_install = false,
         -- 高亮相关
