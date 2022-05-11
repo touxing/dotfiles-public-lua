@@ -445,6 +445,7 @@ local install_plugins = {
   },
   {
     "jose-elias-alvarez/null-ls.nvim",
+    after = {"plenary.nvim"},
     load_file = true
   },
   {
